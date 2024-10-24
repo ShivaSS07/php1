@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Add Data</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -11,9 +12,10 @@
 
 	<form action="addAction.php" method="post" name="add">
 		<table width="25%" border="0">
+		<div class="container">
 			<tr> 
 				<td>Name</td>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="name" required="></td>
 			</tr>
 			<tr> 
 				<td>Age</td>
@@ -51,6 +53,7 @@
 			</tr>
 		</table>
 	</form>
+</div>
 </body>
 </html>
 

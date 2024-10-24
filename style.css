@@ -1,0 +1,123 @@
+/* General body styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #007c92;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Styling the h2 heading */
+
+h2 {
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    font-size: 40px;
+}
+
+
+/* Link styling */
+
+a {
+    color: #cc0000;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 50px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Form styling */
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #00c5f7;
+    padding: 20px;
+    border: 1px solid #00c3ff;
+    border-radius: 5px;
+}
+
+form table {
+    width: 100%;
+    margin: 10px 0;
+}
+
+form td {
+    padding: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+/* Table styling */
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td a {
+    color: #0066cc;
+    padding: 5px 10px;
+}
+
+td a:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}

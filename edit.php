@@ -22,6 +22,7 @@ $address = $resultData['address'];
 <html>
 <head>	
 	<title>Edit Data</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
