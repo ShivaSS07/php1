@@ -21,6 +21,10 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 			<td><strong>Name</strong></td>
 			<td><strong>Age</strong></td>
 			<td><strong>Email</strong></td>
+			<td><strong>Password</strong></td>
+			<td><strong>Gender</strong></td>
+			<td><strong>Phone</strong></td>
+			<td><strong>Address</strong></td>
 			<td><strong>Action</strong></td>
 		</tr>
 		<?php
@@ -30,6 +34,10 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 			echo "<td>".$res['name']."</td>";
 			echo "<td>".$res['age']."</td>";
 			echo "<td>".$res['email']."</td>";	
+			echo "<td>".$res['password']."</td>";
+			echo "<td>".$res['gender']."</td>";
+			echo "<td>".$res['phone']."</td>";
+			echo "<td>".$res['address']."</td>";
 			echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | 
 			<a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 		}
