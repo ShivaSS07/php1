@@ -22,7 +22,8 @@ $address = $resultData['address'];
 <html>
 <head>	
 	<title>Edit Data</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
+
 </head>
 
 <body>
@@ -67,5 +68,8 @@ $address = $resultData['address'];
 			</tr>
 		</table>
 	</form>
+	<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstraps5.min.js"></script>
+
 </body>
 </html>
