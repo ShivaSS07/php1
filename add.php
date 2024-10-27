@@ -94,13 +94,14 @@
     <div class="container">
         <form action="addAction.php" method="post" name="add">
             <table>
-                <tr> 
-                    <td>Name</td>
-                    <td><input type="text" name="name" required></td>
-                </tr>
+            <tr> 
+    <td>Name</td>
+    <td><input type="text" name="name" required maxlength="50" pattern="^[A-Za-z\s]+$" title="Please enter a valid name (letters and spaces only)."></td>
+</tr>
+
                 <tr> 
                     <td>Age</td>
-                    <td><input type="text" name="age" required></td>
+                    <td><input type="number" name="age" required min="0" max="120"></td>
                 </tr>
                 <tr> 
                     <td>Email</td>
@@ -119,15 +120,15 @@
                 </tr>
                 <tr> 
                     <td>Phone</td>
-                    <td><input type="tel" name="phone" required></td>
+                    <td><input type="tel" name="phone" required pattern="^\d{10}$" title="Please enter a valid 10-digit phone number."></td>
                 </tr>
                 <tr> 
                     <td>Address</td>
-                    <td><input type="text" name="address" required></td>
+                    <td><input type="text" name="address" required maxlength="100"></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" required></td>
+                    <td><input type="password" name="password" required minlength="6"></td>
                 </tr>
                 <tr> 
                     <td></td>

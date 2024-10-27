@@ -1,67 +1,129 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Add Data</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .error-list {
+            text-align: left;
+            margin-top: 10px;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 
 <body>
-<?php
-// Include the database connection file
-require_once("dbConnection.php");
+    <div class="container">
+        <h2>Add Data</h2>
+        <?php
+        // Include the database connection file
+        require_once("dbConnection.php");
 
-if (isset($_POST['submit'])) {
-	// Escape special characters in string for use in SQL statement	
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
-	$password = mysqli_real_escape_string($mysqli, $_POST['password']);
-	$gender = mysqli_real_escape_string($mysqli, $_POST['gender']);
-	$phone = mysqli_real_escape_string($mysqli, $_POST['phone']);
-	$address= mysqli_real_escape_string($mysqli, $_POST['address']);
-		
-	// Check for empty fields
-	if (empty($name) || empty($age) || empty($email) || empty($password) || empty($gender) || empty($phone) || empty($address)) {
-		if (empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
-		}
-		
-		if (empty($age)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
-		}
-		
-		if (empty($email)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
+        if (isset($_POST['submit'])) {
+            // Escape special characters in string for use in SQL statement	
+            $name = mysqli_real_escape_string($mysqli, $_POST['name']);
+            $age = mysqli_real_escape_string($mysqli, $_POST['age']);
+            $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+            $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+            $gender = mysqli_real_escape_string($mysqli, $_POST['gender']);
+            $phone = mysqli_real_escape_string($mysqli, $_POST['phone']);
+            $address= mysqli_real_escape_string($mysqli, $_POST['address']);
+            
+            // Initialize an error message array
+            $error_messages = [];
 
-		if (empty($password)) {
-			echo "<font color='red'>Password field is empty.</font><br/>";
-		}
-
-		if (empty($gender)) {
-			echo "<font color='red'>gender field is empty.</font><br/>";
-		}
-
-		if (empty($phone)) {
-			echo "<font color='red'>phone field is empty.</font><br/>";
-		}
-
-		if (empty($address)) {
-			echo "<font color='red'>address field is empty.</font><br/>";
-		}
-		
-		// Show link to the previous page
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
-	} else { 
-		// If all the fields are filled (not empty) 
-
-		// Insert data into database
-		$result = mysqli_query($mysqli, "INSERT INTO users (`name`, `age`, `email`,`password`,`gender`,`phone`,`address`) VALUES ('$name', '$age', '$email','$password','$gender','$phone','$address')");
-		
-		// Display success message
-		echo "<p><font color='green'>Data added successfully!</p>";
-		echo "<a href='index.php'>View Result</a>";
-	}
-}
-?>
+            // Check for empty fields
+            if (empty($name)) {
+                $error_messages[] = "Name field is empty.";
+            }
+            if (empty($age)) {
+                $error_messages[] = "Age field is empty.";
+            }
+            if (empty($email)) {
+                $error_messages[] = "Email field is empty.";
+            }
+            if (empty($password)) {
+                $error_messages[] = "Password field is empty.";
+            }
+            if (empty($gender)) {
+                $error_messages[] = "Gender field is empty.";
+            }
+            if (empty($phone)) {
+                $error_messages[] = "Phone field is empty.";
+            }
+            if (empty($address)) {
+                $error_messages[] = "Address field is empty.";
+            }
+            
+            // Display error messages if there are any
+            if (!empty($error_messages)) {
+                echo '<div class="message error">';
+                echo '<strong>Error!</strong>';
+                echo '<ul class="error-list">';
+                foreach ($error_messages as $error) {
+                    echo "<li>$error</li>";
+                }
+                echo '</ul>';
+                echo '</div>';
+            } else { 
+                // If all the fields are filled (not empty) 
+                // Insert data into database
+                $result = mysqli_query($mysqli, "INSERT INTO users (`name`, `age`, `email`, `password`, `gender`, `phone`, `address`) VALUES ('$name', '$age', '$email', '$password', '$gender', '$phone', '$address')");
+                
+                // Display success message
+                echo '<div class="message success">';
+                echo '<strong>Success!</strong> Data added successfully!';
+                echo '</div>';
+                echo '<a href="index.php">View Result</a>';
+            }
+        }
+        ?>
+    </div>
 </body>
 </html>
